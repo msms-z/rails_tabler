@@ -159,3 +159,6 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem "webdrivers"
 end
+
+# https://github.com/rails/tailwindcss-rails
+gem "tailwindcss-rails", "~> 2.0"
