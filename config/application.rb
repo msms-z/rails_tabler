@@ -19,6 +19,14 @@ module RailsBase
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    
+    config.i18n.default_locale = :'zh-CN'
+    #
+    # 配置默认ID使用UUID代替INT
+    config.generators  do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
+
     config.assets.css_compressor = :sass
     # config.assets.js_compressor  = :terser
   end

@@ -149,6 +149,8 @@ GEM
       warden (~> 1.2.3)
     devise-encryptable (0.2.0)
       devise (>= 2.1.0)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     digest (3.1.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
@@ -456,6 +458,7 @@ DEPENDENCIES
   derailed
   devise
   devise-encryptable
+  devise-i18n
   hiredis
   importmap-rails
   jbuilder

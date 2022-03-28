@@ -1,0 +1,56 @@
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'card card-md' }) do |f| %>
+  <div class="card-body">
+    <h2 class="card-title text-center mb-4">Login to your account</h2>
+    <div class="mb-3">
+      <%= f.label :login, class: 'form-label' %>
+      <%= f.email_field :login, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    </div>
+
+    <div class="mb-2">
+      <%= f.label :password, class: 'form-label' do %>
+        Password
+        <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <span class="form-label-description">
+            <%# <a href="./forgot-password.html">I forgot password</a> %>
+            <%= link_to "I forgot password", new_password_path(resource_name) %>
+          </span>
+        <% end %>
+      <% end %>
+      <div class="input-group input-group-flat" data-controller="password-input" data-password-input-eye-off-class="ti-eye-off"
+              data-password-input-eye-on-class="ti-eye">
+       <%= f.password_field :password, autocomplete: "current-password", 'data-password-input-target': 'pInput', class: 'form-control' %>
+        <span class="input-group-text">
+          <a href="#" class="link-secondary" title="Show password" data-action="click->password-input#change" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+            <i class="ti "
+              data-password-input-target="changeBtn" 
+              ></i>
+            <%# <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="2" /><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" /></svg> %>
+          </a>
+        </span>
+      </div>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="mb-2">
+        <%= f.label :remember_me, class: 'form-check' do %>
+          <%= f.check_box :remember_me, class: 'form-check-input' %>
+          <span class="form-check-label">Remember me on this device</span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="form-footer">
+      <%= f.submit "Log in", class: 'btn btn-primary w-100' %>
+    </div>
+  </div>
+<% end %>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <div class="text-center text-muted mt-3">
+    Don't have account yet? <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  </div>
+<% end %>
+
+
+<%# <%= render "users/shared/links" %>
