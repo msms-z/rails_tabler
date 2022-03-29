@@ -82,7 +82,8 @@ gem 'ruby-push-notifications'
 gem 'kaminari'
 
 # Permission
-gem 'cancancan'
+# gem 'cancancan'
+gem 'pundit'
 
 # Redis
 gem 'hiredis'
