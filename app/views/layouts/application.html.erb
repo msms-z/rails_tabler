@@ -364,7 +364,7 @@
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                 <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
                 <div class="d-none d-xl-block ps-2">
-                  <div>Paweł Kuna</div>
+                  <div><%= current_user.name %>&nbsp;</div>
                   <div class="mt-1 small text-muted">UI Designer</div>
                 </div>
               </a>
@@ -374,7 +374,7 @@
                 <a href="#" class="dropdown-item">Feedback</a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">Settings</a>
-                <a href="#" class="dropdown-item">Logout</a>
+                <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
               </div>
             </div>
           </div>
@@ -393,14 +393,18 @@
           </div>
         </div>
       </header>
-     
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
       
       <div class="page-wrapper">
         <div class="container-xl">
           <!-- Page title -->
           <div class="page-header d-print-none">
+          <% if notice  %>
+            <%= render 'common/alert', content: notice, title: 'Login Success', type: 'success' %>
+          <% end %>
+
+          <% if alert  %>
+            <%= render 'common/alert', content: alert, title: 'Login Error', type: 'danger' %>
+          <% end %>
             <div class="row align-items-center">
               <div class="col">
                 <!-- Page pre-title -->
