@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :lockable, :timeoutable, :trackable,
          :authentication_keys => [:login]
 
+  include VerifyCode
+
   validates :email, uniqueness: true
   validates :mobile, uniqueness: true
   # validates_format_of :mobile, with: /^[0-9]{11}$/

@@ -35,11 +35,11 @@
         </div>
 
         <% if notice  %>
-          <%= render 'common/alert', content: notice, title: 'Login Success', type: 'success' %>
+          <%= render 'common/alert', content: notice, title: 'Success', type: 'success' %>
         <% end %>
 
         <% if alert  %>
-          <%= render 'common/alert', content: alert, title: 'Login Error', type: 'danger' %>
+          <%= render 'common/alert', content: alert, title: 'Error', type: 'danger' %>
         <% end %>
 
         <%= yield %>

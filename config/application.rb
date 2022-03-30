@@ -19,6 +19,18 @@ module RailsBase
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # https://guides.rubyonrails.org/configuring.html#config-action-view-field-error-proc
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      # content_tag :div, html_tag, class: "field_with_errors"
+      html = Nokogiri::HTML::DocumentFragment.parse(html_tag)
+      html = html.at_css("input") || html.at_css("textarea")
+      unless html.nil?
+        css_class = html['class'] || ""
+        html['class'] = css_class.split.push("is-invalid").join(' ')
+        html_tag = html.to_s.html_safe
+      end
+      html_tag
+    }
     
     config.i18n.default_locale = :'zh-CN'
     #
