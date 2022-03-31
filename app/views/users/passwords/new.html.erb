@@ -26,7 +26,11 @@
         </div>
       <% end %>
       </div>
-      <div class="tab-pane" id="tabs-mobile">
+      <div class="tab-pane" id="tabs-mobile" 
+        data-controller="mobile-verify" 
+        data-mobile-verify-disabled-class="disabled"
+        data-mobile-verify-invalid-class="is-invalid"
+      >
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         
         <%# <%= f.hidden_field :reset_password_token %>
@@ -34,14 +38,21 @@
 
         <div class="mb-3">
           <%= f.label :mobile, class: 'form-label' %>
-          <%= f.telephone_field :mobile, autofocus: true, autocomplete: "mobile", class: 'form-control' %>
+          <%= f.telephone_field :mobile, autofocus: true, autocomplete: "mobile", class: 'form-control', 'data-mobile-verify-target': "mobileInput" %>
         </div>
 
         <div class="mb-3">
           <%= f.label 'Verify Code', class: 'form-label' %>
+          
           <div class="input-group mb-2">
-            <%= f.text_field :verify_code, autofocus: true, autocomplete: "email", class: 'form-control' %>
-            <%= button_to "Send", {method: :post, remote: true}, {class: 'btn'} %>
+              <%= f.text_field :verify_code, autofocus: true, class: 'form-control' %>
+              <%= link_to "Send Code",  {action: :edit,remote: true, form: { "data-type" => "json" }}, {
+                  method: :put, 
+                  class: 'btn send-code-btn btn-primary', 
+                  'data-action': "click->mobile-verify#sendCode",
+                  'data-mobile-verify-target': "sendBtn"
+                } 
+              %>
           </div>
         </div>
 
