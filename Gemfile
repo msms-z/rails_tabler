@@ -105,6 +105,9 @@ gem 'sidekiq-scheduler'
 # Audited (previously acts_as_audited) is an ORM extension that logs all changes to your models
 # gem 'audited', '~> 4.9'
 
+# add i18n
+gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
+
 # Sentry gems
 gem 'sentry-ruby'
 gem 'sentry-rails'
