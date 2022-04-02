@@ -1,0 +1,35 @@
+default: &default
+  host: <%= ENV['REDIS_SERVER'] %>
+  encoding: unicode
+  port: <%= ENV.fetch("REDID_PORT") { 6379 } %>
+  password: <%= ENV['REDIS_PASSWORD'] %>
+  # redis 连接超时时间（毫秒）
+  timeout: 0
+  pool:
+    # 最大可用连接数
+    max-active: 8
+    # 最大空闲连接数
+    max-idle: 8
+    # 最小空闲连接数
+    min-idle: 0
+    # 从连接池获取连接最大等待时间（毫秒，负数为无限）
+    max-wait: 10_000
+
+development:
+  <<: *default
+  database: 1
+  namespace: 'dev'
+
+test:
+  <<: *default
+  database: 2
+  namespace: 'test'
+
+#
+# Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
+# for a full overview on how database connection configuration can be specified.
+#
+production:
+  <<: *default
+  database: 3
+  namespace: 'pro'

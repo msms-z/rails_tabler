@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :lockable, :timeoutable, :trackable,
          :authentication_keys => [:login]
 
-  include VerifyCode
+  include VerifyCodeConcern
 
   validates :email, uniqueness: true
   validates :mobile, uniqueness: true

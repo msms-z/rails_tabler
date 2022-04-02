@@ -23,7 +23,18 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
-    config.cache_store = :memory_store
+    # config.cache_store = :memory_store
+    config.cache_store = :redis_cache_store, {
+      host: Rails.application.config_for(:redis).fetch(:host),
+      password: Rails.application.config_for(:redis).fetch(:password),
+      port: Rails.application.config_for(:redis).fetch(:port),
+      database: Rails.application.config_for(:redis).fetch(:database),
+      error_handler: -> (method:, returning:, exception:) {
+        # Report errors to Sentry as warnings
+        Raven.capture_exception exception, level: 'warning',
+          tags: { method: method, returning: returning }
+      }
+    }
     config.public_file_server.headers = {
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }

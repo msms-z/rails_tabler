@@ -1,5 +1,5 @@
 
-module VerifyCode
+module VerifyCodeConcern
 
     extend ActiveSupport::Concern
 

@@ -88,7 +88,7 @@ gem 'pundit'
 # Redis
 gem 'hiredis'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.6.0'
 gem 'redis-namespace'
 gem 'redis-objects'
 

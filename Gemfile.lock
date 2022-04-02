@@ -478,7 +478,7 @@ DEPENDENCIES
   rails-i18n (~> 7.0.0)
   rails-settings-cached
   recaptcha
-  redis (~> 4.0)
+  redis (~> 4.6.0)
   redis-namespace
   redis-objects
   rubocop
