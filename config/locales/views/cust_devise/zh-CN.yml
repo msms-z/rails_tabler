@@ -1,0 +1,25 @@
+zh-CN:
+  mobile: 手机
+  email: 电子邮箱
+  account: 账号
+  password: 密码
+  log_in: 登录
+  sign_in: 登录
+  log_out: 退出登录
+  sign_up_help: 还没有账号？
+  sign_up: 注册
+  # Remember me on this device
+  login_remember_help: 记住我
+  # I forgot password
+  forgot_password_help: 忘记密码
+  # Aleady have an account?
+  sign_in_help: 已经有了账号。
+  # Send me reset password instructions
+  email_reset_help: 发送邮件重置密码
+  # Change my password
+  change_password: 修正密码
+  # Verify Code
+  verify_code: 验证码
+  send_verify_code: 发送验证码
+  
+  

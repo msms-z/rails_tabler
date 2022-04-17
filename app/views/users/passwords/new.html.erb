@@ -1,13 +1,13 @@
 
+<% content_for :title, "找回密码" %>
 
-
-<div class="card  card-md">
+<div class="card card-md">
   <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs">
     <li class="nav-item">
-      <a href="#tabs-email" class="nav-link active" data-bs-toggle="tab">Email</a>
+      <a href="#tabs-email" class="nav-link active" data-bs-toggle="tab"><%= t("email") %></a>
     </li>
     <li class="nav-item">
-      <a href="#tabs-mobile" class="nav-link " data-bs-toggle="tab">Mobile</a>
+      <a href="#tabs-mobile" class="nav-link " data-bs-toggle="tab"><%= t("mobile") %></a>
     </li>
   </ul>
 
@@ -22,7 +22,7 @@
         </div>
       
         <div class="form-footer">
-          <%= f.submit "Send me reset password instructions", class: 'btn btn-primary w-100' %>
+          <%= f.submit t(:email_reset_help), class: 'btn btn-primary w-100' %>
         </div>
       <% end %>
       </div>
@@ -42,11 +42,11 @@
         </div>
 
         <div class="mb-3">
-          <%= f.label 'Verify Code', class: 'form-label' %>
+          <%= f.label t(:verify_code), class: 'form-label' %>
           
           <div class="input-group mb-2">
               <%= f.text_field :verify_code, autofocus: true, class: 'form-control' %>
-              <%= link_to "Send Code",  {action: :edit,remote: true, form: { "data-type" => "json" }}, {
+              <%= link_to t(:send_verify_code),  {action: :edit,remote: true, form: { "data-type" => "json" }}, {
                   method: :put, 
                   class: 'btn send-code-btn btn-primary', 
                   'data-action': "click->mobile-verify#sendCode",
@@ -67,7 +67,7 @@
         </div>
 
         <div class="form-footer">
-          <%= f.submit "Change my password", class: 'btn btn-primary w-100' %>
+          <%= f.submit t(:change_password), class: 'btn btn-primary w-100' %>
         </div>
       <% end %>
       </div>
@@ -76,8 +76,8 @@
 </div>
 
 <div class="text-center text-muted mt-3">
-  <%= link_to "Sign in", new_session_path(resource_name) %>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <%= link_to t(:sign_in), new_session_path(resource_name) %>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <%= link_to t(:sign_up), new_registration_path(resource_name) %><br />
 </div>
 
 

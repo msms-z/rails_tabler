@@ -70,6 +70,7 @@ gem 'recaptcha'
 # 用户系统
 gem 'devise'
 gem 'devise-encryptable'
+# https://github.com/tigrish/devise-i18n
 gem 'devise-i18n'
 # gem 'devise_token_auth', '~> 1.1.5'
 # gem 'devise_token_auth', github: "lynndylanhurley/devise_token_auth"

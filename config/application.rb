@@ -39,6 +39,10 @@ module RailsBase
       g.orm :active_record, primary_key_type: :uuid
     end
 
+    # The default locale loading mechanism in Rails does not load locale files in nested dictionaries, 
+    # like we have here. So, for this to work, we must explicitly tell Rails to look further:
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
     config.assets.css_compressor = :sass
     # config.assets.js_compressor  = :terser
   end

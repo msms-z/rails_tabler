@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsBase</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Devise" %></title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
@@ -35,11 +35,11 @@
         </div>
 
         <% if notice  %>
-          <%= render 'common/alert', content: notice, title: 'Success', type: 'success' %>
+          <%= render 'common/alert', content: notice, title: t(:success), type: 'success' %>
         <% end %>
 
         <% if alert  %>
-          <%= render 'common/alert', content: alert, title: 'Error', type: 'danger' %>
+          <%= render 'common/alert', content: alert, title: t(:error), type: 'danger' %>
         <% end %>
 
         <%= yield %>

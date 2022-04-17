@@ -1,0 +1,7 @@
+zh-CN:
+  activerecord:
+    attributes:
+      user:
+        name: 账号
+        mobile: 手机号码
+        login: 手机号码 / 电子邮箱
