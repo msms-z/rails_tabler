@@ -1,0 +1,37 @@
+<%= form_with(model: verify_code) do |form| %>
+  <% if verify_code.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(verify_code.errors.count, "error") %> prohibited this verify_code from being saved:</h2>
+
+      <ul>
+        <% verify_code.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :code, style: "display: block" %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div>
+    <%= form.label :mobile, style: "display: block" %>
+    <%= form.text_field :mobile %>
+  </div>
+
+  <div>
+    <%= form.label :is_success, style: "display: block" %>
+    <%= form.check_box :is_success %>
+  </div>
+
+  <div>
+    <%= form.label :res_json, style: "display: block" %>
+    <%= form.text_area :res_json %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

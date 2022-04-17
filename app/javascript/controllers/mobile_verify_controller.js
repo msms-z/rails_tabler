@@ -25,7 +25,7 @@ export default class extends Controller {
       this.sendBtnTarget.classList.add(this.disabledClass);
       let currentSeconds = 60;
       const defaultHtml = this.sendBtnTarget.innerHTML;
-      this.sendBtnTarget.innerHTML = "60S"
+      this.sendBtnTarget.innerHTML = "60 S"
       let currentInterval = setInterval(() => {
           if (currentSeconds <= 1) {
               clearInterval(currentInterval);
@@ -33,14 +33,14 @@ export default class extends Controller {
               this.sendBtnTarget.innerHTML = defaultHtml;
           } else {
             currentSeconds -= 1;
-            this.sendBtnTarget.innerHTML = currentSeconds + "S";
+            this.sendBtnTarget.innerHTML = currentSeconds + " S";
           }
       }, 1000);
     }
 
     sendCodeRequest(mobileValue) {
       const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-      fetch('/verify_code', {
+      fetch('/verify_codes.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
