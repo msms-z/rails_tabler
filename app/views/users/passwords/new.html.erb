@@ -1,0 +1,84 @@
+
+<% content_for :title, "找回密码" %>
+
+<div class="card card-md">
+  <ul class="nav nav-tabs nav-fill" data-bs-toggle="tabs">
+    <li class="nav-item">
+      <a href="#tabs-email" class="nav-link active" data-bs-toggle="tab"><%= t("email") %></a>
+    </li>
+    <li class="nav-item">
+      <a href="#tabs-mobile" class="nav-link " data-bs-toggle="tab"><%= t("mobile") %></a>
+    </li>
+  </ul>
+
+  <div class="card-body">
+    <div class="tab-content">
+      <div class="tab-pane active" id="tabs-email">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+        <div class="md-3">
+          <%= f.label :email, class: 'form-label' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        </div>
+      
+        <div class="form-footer">
+          <%= f.submit t(:email_reset_help), class: 'btn btn-primary w-100' %>
+        </div>
+      <% end %>
+      </div>
+      <div class="tab-pane" id="tabs-mobile" 
+        data-controller="mobile-verify" 
+        data-mobile-verify-disabled-class="disabled"
+        data-mobile-verify-invalid-class="is-invalid"
+      >
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        
+        <%# <%= f.hidden_field :reset_password_token %>
+        <%= f.hidden_field :is_verify_code, value: true %>
+
+        <div class="mb-3">
+          <%= f.label :mobile, class: 'form-label' %>
+          <%= f.telephone_field :mobile, autofocus: true, autocomplete: "mobile", class: 'form-control', 'data-mobile-verify-target': "mobileInput" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label t(:verify_code), class: 'form-label' %>
+          
+          <div class="input-group mb-2">
+              <%= f.text_field :verify_code, autofocus: true, class: 'form-control' %>
+              <%= link_to t(:send_verify_code),  {action: :edit,remote: true, form: { "data-type" => "json" }}, {
+                  method: :put, 
+                  class: 'btn send-code-btn btn-primary', 
+                  'data-action': "click->mobile-verify#sendCode",
+                  'data-mobile-verify-target': "sendBtn"
+                } 
+              %>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password %>
+          <%= render "users/shared/password_input", form: f, password_field: :password %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password_confirmation %><br />
+          <%= render "users/shared/password_input", form: f, password_field: :password_confirmation %>
+        </div>
+
+        <div class="form-footer">
+          <%= f.submit t(:change_password), class: 'btn btn-primary w-100' %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center text-muted mt-3">
+  <%= link_to t(:sign_in), new_session_path(resource_name) %>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <%= link_to t(:sign_up), new_registration_path(resource_name) %><br />
+</div>
+
+
+

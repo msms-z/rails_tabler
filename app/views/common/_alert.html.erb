@@ -1,0 +1,16 @@
+
+<div class="alert alert-<%= local_assigns[:type].nil? ? 'danger' : type %> alert-dismissible" role="alert">
+    <div class="d-flex">
+        <div>
+        <!-- Download SVG icon from http://tabler-icons.io/i/alert-circle -->
+        <!-- SVG icon code with class="alert-icon" -->
+        </div>
+        <div>
+        <% unless local_assigns[:title].nil? %>
+            <h4 class="alert-title"><%= title %></h4>
+        <% end %>
+        <div class="text-muted"><%= content %></div>
+        </div>
+    </div>
+    <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+</div>

@@ -1,0 +1,11 @@
+zh-CN:
+  activerecord:
+    errors:
+      models:
+        verify_code:
+          attributes:
+            mobile:
+              mobile_send_limit: 验证码发送数量达到当日限制数量
+    attributes:
+      verify_code:
+        mobile: 手机号码

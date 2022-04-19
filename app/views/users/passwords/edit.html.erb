@@ -1,0 +1,26 @@
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'card card-md' }) do |f| %>
+  <div class="card-body">
+    <h2 class="card-title text-center mb-4">Change Password</h2>  
+  
+    <%= f.hidden_field :reset_password_token %>
+    <div class="mb-3">
+      <%= f.label :password, "New password" %>
+      <%= render "users/shared/password_input", form: f, password_field: :password %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password_confirmation, "Confirm new password" %><br />
+      <%= render "users/shared/password_input", form: f, password_field: :password_confirmation %>
+    </div>
+
+    <div class="form-footer">
+      <%= f.submit "Change my password", class: 'btn btn-primary w-100' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center text-muted mt-3">
+  <%= link_to "Sign in", new_session_path(resource_name) %>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+</div>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Devise" %></title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="//unpkg.com/@tabler/core@latest/dist/css/tabler.min.css">
+    <link rel="stylesheet" href="//unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+    <script src="//unpkg.com/@tabler/core@latest/dist/js/tabler.min.js"></script>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <style>
+      a:hover {
+        text-decoration:none;
+      }
+    </style>
+
+  </head>
+
+  <body class=" border-top-wide border-primary d-flex flex-column">
+
+    <div class="page page-center">
+      
+      <div class="container-tight py-4">
+      
+        <div class="text-center mb-4">
+          <a href="/" class="navbar-brand navbar-brand-autodark"><img src="/logo.png" height="36" alt=""></a>
+        </div>
+
+        <% if notice  %>
+          <%= render 'common/alert', content: notice, title: t(:success), type: 'success' %>
+        <% end %>
+
+        <% if alert  %>
+          <%= render 'common/alert', content: alert, title: t(:error), type: 'danger' %>
+        <% end %>
+
+        <%= yield %>
+
+        
+      </div>
+    </div>
+    
+    
+
+  </body>
+</html>

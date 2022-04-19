@@ -77,7 +77,6 @@ GEM
     bootsnap (1.11.1)
       msgpack (~> 1.2)
     builder (3.2.4)
-    cancancan (3.3.0)
     capistrano (3.8.2)
       airbrussh (>= 1.0.0)
       i18n
@@ -149,6 +148,8 @@ GEM
       warden (~> 1.2.3)
     devise-encryptable (0.2.0)
       devise (>= 2.1.0)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     digest (3.1.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
@@ -253,6 +254,8 @@ GEM
     public_suffix (4.0.6)
     puma (5.6.2)
       nio4r (~> 2.0)
+    pundit (2.2.0)
+      activesupport (>= 3.0.0)
     qiniu (6.9.1)
       mime-types (~> 3.1)
       rest-client (~> 2.0)
@@ -283,6 +286,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails-i18n (7.0.3)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     rails-settings-cached (2.8.2)
       rails (>= 5.0.0)
     railties (7.0.2.3)
@@ -442,7 +448,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
-  cancancan
   capistrano (~> 3.8.2)
   capistrano-rails (~> 1.1)
   capistrano-rvm
@@ -456,6 +461,7 @@ DEPENDENCIES
   derailed
   devise
   devise-encryptable
+  devise-i18n
   hiredis
   importmap-rails
   jbuilder
@@ -466,11 +472,13 @@ DEPENDENCIES
   notifications
   pg (~> 1.1)
   puma (~> 5.0)
+  pundit
   rack-mini-profiler
   rails (~> 7.0.2, >= 7.0.2.3)
+  rails-i18n (~> 7.0.0)
   rails-settings-cached
   recaptcha
-  redis (~> 4.0)
+  redis (~> 4.6.0)
   redis-namespace
   redis-objects
   rubocop

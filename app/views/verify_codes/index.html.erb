@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Verify codes</h1>
+
+<div id="verify_codes">
+  <% @verify_codes.each do |verify_code| %>
+    <%= render verify_code %>
+    <p>
+      <%= link_to "Show this verify code", verify_code %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New verify code", new_verify_code_path %>

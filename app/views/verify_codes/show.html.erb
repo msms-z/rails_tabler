@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @verify_code %>
+
+<div>
+  <%= link_to "Edit this verify code", edit_verify_code_path(@verify_code) %> |
+  <%= link_to "Back to verify codes", verify_codes_path %>
+
+  <%= button_to "Destroy this verify code", @verify_code, method: :delete %>
+</div>

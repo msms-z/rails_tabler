@@ -1,0 +1,44 @@
+
+<%= content_for :title, t(:sign_up) %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'card card-md' }) do |f| %>
+  <div class="card-body">
+    <h2 class="card-title text-center mb-4"><%= t :sign_up %></h2>
+
+    <%= render "users/shared/error_messages", resource: resource %>
+
+    <div class="mb-3">
+      <%= f.label :name, class: 'form-label' %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :mobile, class: 'form-label' %>
+      <%= f.telephone_field :mobile, autofocus: true, autocomplete: "mobile", class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :email, class: 'form-label' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password %>
+      <%= render "users/shared/password_input", form: f, password_field: :password %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password_confirmation %><br />
+      <%= render "users/shared/password_input", form: f, password_field: :password_confirmation %>
+    </div>
+
+    <div class="form-footer">
+      <%= f.submit t(:sign_up), class: 'btn btn-primary w-100' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center text-muted mt-3">
+   <%= t :sign_in_help %><%= link_to t(:sign_in), new_session_path(resource_name) %><br />
+</div>
+

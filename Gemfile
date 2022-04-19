@@ -70,6 +70,8 @@ gem 'recaptcha'
 # 用户系统
 gem 'devise'
 gem 'devise-encryptable'
+# https://github.com/tigrish/devise-i18n
+gem 'devise-i18n'
 # gem 'devise_token_auth', '~> 1.1.5'
 # gem 'devise_token_auth', github: "lynndylanhurley/devise_token_auth"
 
@@ -81,12 +83,13 @@ gem 'ruby-push-notifications'
 gem 'kaminari'
 
 # Permission
-gem 'cancancan'
+# gem 'cancancan'
+gem 'pundit'
 
 # Redis
 gem 'hiredis'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.6.0'
 gem 'redis-namespace'
 gem 'redis-objects'
 
@@ -102,6 +105,9 @@ gem 'sidekiq-scheduler'
 
 # Audited (previously acts_as_audited) is an ORM extension that logs all changes to your models
 # gem 'audited', '~> 4.9'
+
+# add i18n
+gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 
 # Sentry gems
 gem 'sentry-ruby'
