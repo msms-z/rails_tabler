@@ -4,7 +4,7 @@ class VerifyCode < ApplicationRecord
     after_commit :increment_send_times, on: :create
 
     private
-
+    
     def mobile_day_limit
         if Rails.cache.exist?(current_cache_key, raw: true) && Rails.cache.read(current_cache_key, raw: true).to_i > 5
             self.errors.add(:mobile, :mobile_send_limit)
@@ -22,7 +22,5 @@ class VerifyCode < ApplicationRecord
     def current_cache_key
         "verify_code:#{self.mobile}"
     end
-
-
 
 end
